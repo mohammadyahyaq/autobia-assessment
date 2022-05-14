@@ -10,21 +10,28 @@ interface Props {
         id: string;
         icon: string;
         title: string;
-    }[]>>
+    }[]>>;
 }
 
 export const CustomDropContext: React.FC<Props> = ({ cardsDetails, setCardDetails, children }) => {
     const id = v4();
     return (
         <DragDropContext onDragEnd={(result) => {
+            // this function will handle the drag event
+            // ========================================================
+            // if the element dragged out side the menu do nothing
             if (!result.destination) return;
 
             const items = Array.from(cardsDetails);
+            // pop the source element of the array
             const [reorderedItem] = items.splice(result.source.index, 1);
+            // push it to the destination index
             items.splice(result.destination.index, 0, reorderedItem);
 
+            // update the hook
             setCardDetails(items);
         }}>
+            {/* Droppable is the place where you could drop the dragged element in (the whole menu) */}
             <Droppable key={id} droppableId={id}>
                 {(provided) => (
                     <ul className='menu-list' {...provided.droppableProps} ref={provided.innerRef}>
@@ -40,6 +47,7 @@ export const CustomDropContext: React.FC<Props> = ({ cardsDetails, setCardDetail
 export const CustomDraggable: React.FC<{ index: number, children: JSX.Element }> = ({ index, children }) => {
     const id = v4();
     return (
+        // the key and draggableId should be the same (otherwise, you might get an error)
         <Draggable key={id} index={index} draggableId={id}>
             {(provided) => (
                 <li className='flex-x xp-3 yp-2' {...provided.draggableProps} ref={provided.innerRef}>

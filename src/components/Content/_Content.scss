@@ -1,13 +1,18 @@
 @use '../../partials/variables' as *;
 
 .content {
+    // add a padding for the content
     box-sizing: border-box;
     padding: 2rem;
+
+    // make the position absolute to create the animation by moving the element freely
     position: absolute;
+    // if the content overflowed add a scroll
     overflow-y: auto;
 
     // setup the mobile width
     width: 100%;
+    // if the menu opened move the content to the right (to make a slider animation)
     left: 100%;
 
     // add the css animation
@@ -22,7 +27,9 @@
 // on the computer screen
 @media (min-width: 60em) {
     .content {
+        // in the computer mode, shrink the content to leave a space for the menu
         width: calc(100% - min(20%, 15rem));
+        // push the content to the right to leave a space for the menu
         left: min(20%, 15rem);
         // in case the menu closed
         &.close {
@@ -33,8 +40,8 @@
 }
 
 .form-section {
+    // the form section will take the whole parent width
     width: 100%;
-    margin-inline: auto;
 
     header {
         font-weight: 400;
@@ -56,6 +63,7 @@
     accent-color: #039e65;
 
     &+label {
+        // the font size will be dynamic based on the view port width
         font-size: clamp(.7rem, .5vw + .3rem, 2rem);
         color: $secondary-color;
     }
@@ -67,20 +75,24 @@
     &+label::after {
         content: '';
         position: absolute;
+        // we should make the line start from the left and it should be on the half of the parent text (almost)
         left: 0;
         bottom: 45%;
 
+        // the height represents the thickness of the line
         height: .1rem;
 
         background-color: black;
     }
 
     &:checked+label::after {
+        // make the line-through animation
         animation: line-through .5s ease-in forwards;
     }
 }
 
 @keyframes line-through {
+    // the line will grow from 0 width to 100%
     from {
         width: 0;
     }
