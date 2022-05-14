@@ -10,3 +10,4 @@
 * Redux
 * Typescript
 * SASS
+* React Beautiful DnD
