@@ -1,0 +1,54 @@
+// here we will list all the utility classes
+$sizes: 1, 2, 3, 4;
+
+@function calculateRem($size) {
+    $remSize: calc($size / 2);
+    @return #{$remSize}rem;
+}
+
+@each $size in $sizes {
+    .p-#{$size} {
+        padding: calculateRem($size);
+    }
+}
+
+@each $size in $sizes {
+    .yp-#{$size} {
+        padding-block: calculateRem($size);
+    }
+}
+
+@each $size in $sizes {
+    .xp-#{$size} {
+        padding-inline: calculateRem($size);
+    }
+}
+
+.display-block {
+    display: block;
+}
+
+.auto-right {
+    margin-left: auto;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.parent-height {
+    height: 100%;
+}
+
+.flex-x{
+    display: flex;
+}
+
+.flex-y {
+    display: flex;
+    flex-direction: column;
+}
+
+.fx-to-end {
+    flex-grow: 1;
+}

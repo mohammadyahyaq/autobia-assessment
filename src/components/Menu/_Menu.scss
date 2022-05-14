@@ -1,0 +1,57 @@
+@use '../../partials/variables' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/utilities' as *;
+
+.menu {
+    box-sizing: border-box;
+    padding-top: 1rem;
+
+    // now, the implementation of the open-close animation
+    transition: transform .5s ease-in-out;
+
+    &.close {
+        transform: translateX(-100%);
+    }
+
+    // on mobile only
+    width: 100%;
+    border: none;
+}
+
+// on computer screen
+@media (min-width: 60em) {
+    .menu {
+        width: min(20%, 15rem);
+        border-right: 1px $border-color solid;
+    }
+}
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+
+    .menu-button {
+        // convert the button into a flexbox
+        @extend .flex-x;
+        align-items: center;
+        gap: 1.5rem;
+
+        @include remove-default;
+
+        &.selected {
+            img {
+                fill: $primary-color;
+            }
+
+            .menu-title {
+                color: $primary-color;
+            }
+        }
+
+    }
+
+    .menu-title {
+        font-weight: 400;
+        font-size: clamp(.8rem, .5vw + .3rem, 3rem);
+    }
+}

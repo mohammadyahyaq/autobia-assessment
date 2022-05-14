@@ -1,0 +1,90 @@
+@use '../../partials/variables' as *;
+
+.content {
+    box-sizing: border-box;
+    padding: 2rem;
+    position: absolute;
+    overflow-y: auto;
+
+    // setup the mobile width
+    width: 100%;
+    left: 100%;
+
+    // add the css animation
+    transition: all .5s ease-in-out;
+
+    // in case the menu closed
+    &.close {
+        left: 0;
+    }
+}
+
+// on the computer screen
+@media (min-width: 60em) {
+    .content {
+        width: calc(100% - min(20%, 15rem));
+        left: min(20%, 15rem);
+        // in case the menu closed
+        &.close {
+            width: 100%;
+            left: 0;
+        }
+    }
+}
+
+.form-section {
+    width: 100%;
+    margin-inline: auto;
+
+    header {
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+
+    form {
+        box-sizing: border-box;
+        padding-block: 1rem;
+        margin-bottom: 2rem;
+
+        border: 1px $border-color solid;
+        border-radius: .2rem;
+    }
+}
+
+.customCheckbox {
+    margin-inline: 1rem;
+    accent-color: #039e65;
+
+    &+label {
+        font-size: clamp(.7rem, .5vw + .3rem, 2rem);
+        color: $secondary-color;
+    }
+
+    &:checked+label {
+        position: relative;
+    }
+
+    &+label::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 45%;
+
+        height: .1rem;
+
+        background-color: black;
+    }
+
+    &:checked+label::after {
+        animation: line-through .5s ease-in forwards;
+    }
+}
+
+@keyframes line-through {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}

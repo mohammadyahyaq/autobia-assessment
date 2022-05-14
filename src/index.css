@@ -1,4 +1,273 @@
+.p-1 {
+  padding: 0.5rem;
+}
+
+.p-2 {
+  padding: 1rem;
+}
+
+.p-3 {
+  padding: 1.5rem;
+}
+
+.p-4 {
+  padding: 2rem;
+}
+
+.yp-1 {
+  padding-block: 0.5rem;
+}
+
+.yp-2 {
+  padding-block: 1rem;
+}
+
+.yp-3 {
+  padding-block: 1.5rem;
+}
+
+.yp-4 {
+  padding-block: 2rem;
+}
+
+.xp-1 {
+  padding-inline: 0.5rem;
+}
+
+.xp-2 {
+  padding-inline: 1rem;
+}
+
+.xp-3 {
+  padding-inline: 1.5rem;
+}
+
+.xp-4 {
+  padding-inline: 2rem;
+}
+
+.display-block {
+  display: block;
+}
+
+.auto-right {
+  margin-left: auto;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.parent-height {
+  height: 100%;
+}
+
+.flex-x, .menu-list .menu-button {
+  display: flex;
+}
+
+.flex-y {
+  display: flex;
+  flex-direction: column;
+}
+
+.fx-to-end {
+  flex-grow: 1;
+}
+
+#navbar {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px #E8E8E8 solid;
+  display: flex;
+  gap: 1.5rem;
+}
+
+#logo {
+  width: clamp(1.5rem, 3.4vh + 0.1rem, 6rem);
+}
+
+#humbergerButton {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  width: clamp(1.5rem, 3.4vh + 0.1rem, 6rem);
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+#humbergerButton div {
+  width: 100%;
+  height: 0.12rem;
+  border-radius: 0.2rem;
+  background-color: #878B98;
+  transition-property: transform, background-color;
+  transition: 0.5s ease-in-out;
+}
+#humbergerButton div::before, #humbergerButton div::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0.12rem;
+  border-radius: 0.2rem;
+  background-color: #878B98;
+  transition-property: transform, background-color;
+  transition: 0.5s ease-in-out;
+}
+#humbergerButton div::before {
+  transform: translateY(-500%) rotate(0);
+}
+#humbergerButton div::after {
+  transform: translateY(500%) rotate(0);
+}
+
+#humbergerButton.close div {
+  transform: translateX(-30%);
+  background-color: transparent;
+}
+#humbergerButton.close div::before {
+  transform: translateX(30%) rotate(-45deg);
+}
+#humbergerButton.close div::after {
+  transform: translateX(30%) rotate(45deg);
+}
+
+.page-content {
+  position: relative;
+}
+
+.menu {
+  box-sizing: border-box;
+  padding-top: 1rem;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  border: none;
+}
+.menu.close {
+  transform: translateX(-100%);
+}
+
+@media (min-width: 60em) {
+  .menu {
+    width: min(20%, 15rem);
+    border-right: 1px #E8E8E8 solid;
+  }
+}
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+}
+.menu-list .menu-button {
+  align-items: center;
+  gap: 1.5rem;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+.menu-list .menu-button.selected img {
+  fill: #E9471C;
+}
+.menu-list .menu-button.selected .menu-title {
+  color: #E9471C;
+}
+.menu-list .menu-title {
+  font-weight: 400;
+  font-size: clamp(0.8rem, 0.5vw + 0.3rem, 3rem);
+}
+
+.content {
+  box-sizing: border-box;
+  padding: 2rem;
+  position: absolute;
+  overflow-y: auto;
+  width: 100%;
+  left: 100%;
+  transition: all 0.5s ease-in-out;
+}
+.content.close {
+  left: 0;
+}
+
+@media (min-width: 60em) {
+  .content {
+    width: calc(100% - min(20%, 15rem));
+    left: min(20%, 15rem);
+  }
+  .content.close {
+    width: 100%;
+    left: 0;
+  }
+}
+.form-section {
+  width: 100%;
+  margin-inline: auto;
+}
+.form-section header {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+.form-section form {
+  box-sizing: border-box;
+  padding-block: 1rem;
+  margin-bottom: 2rem;
+  border: 1px #E8E8E8 solid;
+  border-radius: 0.2rem;
+}
+
+.customCheckbox {
+  margin-inline: 1rem;
+  accent-color: #039e65;
+}
+.customCheckbox + label {
+  font-size: clamp(0.7rem, 0.5vw + 0.3rem, 2rem);
+  color: #878B98;
+}
+.customCheckbox:checked + label {
+  position: relative;
+}
+.customCheckbox + label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 45%;
+  height: 0.1rem;
+  background-color: black;
+}
+.customCheckbox:checked + label::after {
+  -webkit-animation: line-through 0.5s ease-in forwards;
+          animation: line-through 0.5s ease-in forwards;
+}
+
+@-webkit-keyframes line-through {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes line-through {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
 body {
-  margin: 0;
   font-family: "Roboto", sans-serif;
+}
+
+* {
+  margin: 0;
 }
